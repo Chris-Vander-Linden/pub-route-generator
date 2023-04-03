@@ -26,7 +26,7 @@ class BeerRouteCreate extends React.Component {
   }
 
   getYelpData = () => {
-    axios.get(`https://brew-crew-backend.onrender.com/yelp/${this.state.baseLocation} `)
+    axios.get(`http://localhost:3003/yelp/${this.state.baseLocation} `)
       .then(response => { this.setState({ yelpData: response.data }) })
       .catch(error => console.error(error));
   }
@@ -54,7 +54,7 @@ class BeerRouteCreate extends React.Component {
           'Authorization': `Bearer ${jwt}`
         }
 
-        axios.post('https://brew-crew-backend.onrender.com/dbResults', {
+        axios.post('http://localhost:3003/dbResults', {
           yelpData: this.state.yelpData,
           directions: this.state.directions,
           email: res.email
@@ -114,7 +114,7 @@ class BeerRouteCreate extends React.Component {
     // Replace welcome message with loader
     if (prevState.directions === this.state.directions) this.setState({ welcomeMessage: false, noDirections: false });
 
-    axios.get(`https://brew-crew-backend.onrender.com/bingDirections/${directionQuery} `)
+    axios.get(`http://localhost:3003/bingDirections/${directionQuery} `)
       .then(response => this.setState({ directions: response.data }))
       .catch(error => console.error(error))
       .finally(() => {
@@ -189,7 +189,7 @@ class BeerRouteCreate extends React.Component {
             </> :
             <div id='noResults' className={ this.state.welcomeMessage ? '' : 'loading' }>
               { this.state.welcomeMessage ? <div id='homeMessage'>
-                <h1>< IoMdBeer />Trails of Ales</h1>
+                <h1><IoMdBeer/>Trails of Ales</h1>
                 <p>
                   Welcome to our site.  This site was created to help create the most efficient biking (or walking) route between selected bars.
                 </p>
