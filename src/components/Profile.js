@@ -10,14 +10,14 @@ const Profile = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-  
+
   return (
     isAuthenticated && (
       <>
         <div>
           <img src={ user.picture } alt={ user.name } />
-          <h2><CgProfile/> { user.name }</h2>
-          <p><AiOutlineMail/> { user.email }</p>
+          <h2><CgProfile /> { user.name }</h2>
+          <p><AiOutlineMail /> { user.email }</p>
         </div>
       </>
     )
